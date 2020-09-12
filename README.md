@@ -2,6 +2,8 @@
 
 Sistema de Eventos encomendado pela Morena.
 
+https://travis-ci.com/geovanecarvalho/wttd.svg?branch=master
+
 ## Como desenvolver?
 
 1. Clone o repositório.
@@ -34,7 +36,7 @@ python manage.py test
 ```console
 heroku create minhainstancia
 heroku config:push
-heroku config:set SECRET_KEY ='python contrib/secret_gen.py'
+heroku config:set SECRET_KEY =`python contrib/secret_gen.py`
 heroku config:set DEBUG=False
 # configuro o email
 git push heroku master --force
