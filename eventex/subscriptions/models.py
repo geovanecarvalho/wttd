@@ -10,7 +10,7 @@ class Subscription(models.Model):
 	class Meta:
 		verbose_name_plural = "Inscrições"
 		verbose_name = "Inscrição"
-		ordering = ("-created_at",)
+		ordering = ("-created_at"),
 	def __str__(self):
 		return self.name
 

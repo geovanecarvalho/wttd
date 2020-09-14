@@ -12,4 +12,5 @@ class SubscriptionModelAdmin(admin.ModelAdmin):
 
 	subscribed_today.short_description = "inscrito hoje?"
 	subscribed_today.boolean = True	
+
 admin.site.register(Subscription, SubscriptionModelAdmin)
