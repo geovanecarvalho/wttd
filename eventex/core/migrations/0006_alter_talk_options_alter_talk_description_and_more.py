@@ -12,7 +12,10 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='talk',
-            options={'verbose_name': 'palestra', 'verbose_name_plural': 'palestras'},
+            options={
+                'verbose_name': 'palestra',
+                'verbose_name_plural': 'palestras',
+            },
         ),
         migrations.AlterField(
             model_name='talk',
@@ -22,12 +25,16 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='talk',
             name='speakers',
-            field=models.ManyToManyField(blank=True, to='core.Speaker', verbose_name='palestrantes'),
+            field=models.ManyToManyField(
+                blank=True, to='core.Speaker', verbose_name='palestrantes'
+            ),
         ),
         migrations.AlterField(
             model_name='talk',
             name='start',
-            field=models.TimeField(blank=True, null=True, verbose_name='inicio'),
+            field=models.TimeField(
+                blank=True, null=True, verbose_name='inicio'
+            ),
         ),
         migrations.AlterField(
             model_name='talk',

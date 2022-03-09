@@ -9,7 +9,7 @@ home = ListView.as_view(template_name='index.html', model=Speaker)
 
 def speaker_detail(request, slug):
     speaker = get_object_or_404(Speaker, slug=slug)
-    return render(request, 'core/speaker_detail.html',{'speaker': speaker})
+    return render(request, 'core/speaker_detail.html', {'speaker': speaker})
 
 
 def talk_list(request):

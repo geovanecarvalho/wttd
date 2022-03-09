@@ -13,12 +13,38 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Course',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200, verbose_name='título')),
-                ('start', models.TimeField(blank=True, null=True, verbose_name='inicio')),
-                ('description', models.TextField(blank=True, verbose_name='descrição')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'title',
+                    models.CharField(max_length=200, verbose_name='título'),
+                ),
+                (
+                    'start',
+                    models.TimeField(
+                        blank=True, null=True, verbose_name='inicio'
+                    ),
+                ),
+                (
+                    'description',
+                    models.TextField(blank=True, verbose_name='descrição'),
+                ),
                 ('slots', models.IntegerField()),
-                ('speakers', models.ManyToManyField(blank=True, to='core.Speaker', verbose_name='palestrantes')),
+                (
+                    'speakers',
+                    models.ManyToManyField(
+                        blank=True,
+                        to='core.Speaker',
+                        verbose_name='palestrantes',
+                    ),
+                ),
             ],
             options={
                 'verbose_name': 'palestra',

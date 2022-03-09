@@ -5,7 +5,7 @@ from eventex.core.manage import KindcontactManager, PeriodManager
 
 
 class Speaker(models.Model):
-    name = models.CharField('nome',max_length=255)
+    name = models.CharField('nome', max_length=255)
     slug = models.SlugField('slug')
     photo = models.URLField('foto')
     website = models.URLField('website', blank=True)
@@ -29,7 +29,9 @@ class Contact(models.Model):
         (EMAIL, 'Email'),
         (PHONE, 'Telefone'),
     )
-    speaker = models.ForeignKey('Speaker', on_delete=models.CASCADE, verbose_name='palestrante')
+    speaker = models.ForeignKey(
+        'Speaker', on_delete=models.CASCADE, verbose_name='palestrante'
+    )
     kind = models.CharField('tipo', max_length=1, choices=KINDS)
     value = models.CharField('valor', max_length=255)
 
@@ -44,15 +46,17 @@ class Contact(models.Model):
 
 
 class Talk(models.Model):
-    title = models.CharField('título',max_length=200)
+    title = models.CharField('título', max_length=200)
     start = models.TimeField('inicio', blank=True, null=True)
     description = models.TextField('descrição', blank=True)
-    speakers = models.ManyToManyField('Speaker', verbose_name='palestrantes', blank=True)
+    speakers = models.ManyToManyField(
+        'Speaker', verbose_name='palestrantes', blank=True
+    )
 
     objects = PeriodManager()
 
     class Meta:
-        ordering =['start']
+        ordering = ['start']
         verbose_name_plural = 'palestras'
         verbose_name = 'palestra'
 

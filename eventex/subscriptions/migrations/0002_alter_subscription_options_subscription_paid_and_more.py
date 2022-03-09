@@ -12,7 +12,11 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='subscription',
-            options={'ordering': ('-created_at',), 'verbose_name': 'inscrição', 'verbose_name_plural': 'inscrições'},
+            options={
+                'ordering': ('-created_at',),
+                'verbose_name': 'inscrição',
+                'verbose_name_plural': 'inscrições',
+            },
         ),
         migrations.AddField(
             model_name='subscription',
@@ -27,7 +31,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='subscription',
             name='created_at',
-            field=models.DateTimeField(auto_now_add=True, verbose_name='criado em'),
+            field=models.DateTimeField(
+                auto_now_add=True, verbose_name='criado em'
+            ),
         ),
         migrations.AlterField(
             model_name='subscription',

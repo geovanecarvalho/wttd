@@ -6,7 +6,7 @@ from eventex.core.manage import PeriodManager
 class TalkModelTest(TestCase):
     def setUp(self):
         self.talk = Talk.objects.create(
-            title = 'Título da Palestra',
+            title='Título da Palestra',
             # start = '10:00',
             # description = 'Descrição da palestra.'
         )
@@ -19,14 +19,14 @@ class TalkModelTest(TestCase):
         self.talk.speakers.create(
             name='Henrique Bastos',
             slug='henrique-bastos',
-            website='http://henriquebastos.net'
+            website='http://henriquebastos.net',
         )
         self.assertEqual(1, self.talk.speakers.count())
 
     def test_description_blank(self):
         field = Talk._meta.get_field('description')
         self.assertTrue(field.blank)
-    
+
     def test_speakers_blank(self):
         field = Talk._meta.get_field('speakers')
         self.assertTrue(field.blank)
@@ -58,14 +58,13 @@ class PeriodManagerTest(TestCase):
         qs = Talk.objects.at_morning()
         expected = ['Morning Talk']
 
-        self.assertQuerysetEqual(qs, expected, lambda o:o.title)
+        self.assertQuerysetEqual(qs, expected, lambda o: o.title)
 
     def test_at_afternoon(self):
         qs = Talk.objects.at_afternoon()
         expected = ['Afternoon Talk']
 
-        self.assertQuerysetEqual(qs, expected, lambda o:o.title)
-
+        self.assertQuerysetEqual(qs, expected, lambda o: o.title)
 
 
 class CourseModelTest(TestCase):
@@ -74,7 +73,7 @@ class CourseModelTest(TestCase):
             title='Título do Curso',
             start='09:00',
             description='Descrição do curso.',
-            slots=20
+            slots=20,
         )
 
     def test_create(self):
@@ -84,17 +83,15 @@ class CourseModelTest(TestCase):
         self.course.speakers.create(
             name='Henrique Bastos',
             slug='henrique-bastos',
-            website='http://henriquebastos.net'
+            website='http://henriquebastos.net',
         )
         self.assertEqual(1, self.course.speakers.count())
 
     def test_str(self):
         self.assertEqual('Título do Curso', str(self.course))
 
-    
     def test_manager(self):
         self.assertIsInstance(Course.objects, PeriodManager)
-
 
     def test_ordering(self):
         self.assertListEqual(['start'], Talk._meta.ordering)

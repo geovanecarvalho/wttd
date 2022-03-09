@@ -1,11 +1,20 @@
 from django.test import TestCase
-from eventex.subscriptions.admin import SubscriptionModelAdmin, Subscription, admin
+from eventex.subscriptions.admin import (
+    SubscriptionModelAdmin,
+    Subscription,
+    admin,
+)
 from unittest.mock import Mock
+
 
 class SubscriptionModelAdminTest(TestCase):
     def setUp(self):
-        Subscription.objects.create(name='Henrique Bastos', cpf='12345678901',
-                                email='henrique@bastos.net', phone='21-996186180')
+        Subscription.objects.create(
+            name='Henrique Bastos',
+            cpf='12345678901',
+            email='henrique@bastos.net',
+            phone='21-996186180',
+        )
         self.model_admin = SubscriptionModelAdmin(Subscription, admin.site)
 
     def test_has_action(self):
@@ -20,9 +29,10 @@ class SubscriptionModelAdminTest(TestCase):
     def test_message(self):
         """It should send a message to the user."""
         mock = self.call_action()
-        mock.assert_called_once_with(None, '1 inscrição foi marcada como paga.')
+        mock.assert_called_once_with(
+            None, '1 inscrição foi marcada como paga.'
+        )
 
-       
     def call_action(self):
         queryset = Subscription.objects.all()
 

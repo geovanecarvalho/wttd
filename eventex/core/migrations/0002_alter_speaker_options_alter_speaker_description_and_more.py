@@ -12,7 +12,10 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='speaker',
-            options={'verbose_name': 'palestrante', 'verbose_name_plural': 'palestrantes'},
+            options={
+                'verbose_name': 'palestrante',
+                'verbose_name_plural': 'palestrantes',
+            },
         ),
         migrations.AlterField(
             model_name='speaker',

@@ -2,27 +2,27 @@ from django.forms import ValidationError
 from django.test import TestCase
 from eventex.core.models import Speaker, Contact
 
+
 class contactModelTest(TestCase):
     def setUp(self):
         self.speaker = Speaker.objects.create(
             name='Henrique Bastos',
             slug='henrique-bastos',
-            photo='http://hbn.link/hb-pic'
+            photo='http://hbn.link/hb-pic',
         )
+
     def test_email(self):
         contact = Contact.objects.create(
             speaker=self.speaker,
             kind=Contact.EMAIL,
-            value='henrique@bastos.net'
+            value='henrique@bastos.net',
         )
 
         self.assertTrue(Contact.objects.exists())
 
     def test_phone(self):
         contact = Contact.objects.create(
-            speaker=self.speaker,
-            kind=Contact.PHONE,
-            value='21-996186180'
+            speaker=self.speaker, kind=Contact.PHONE, value='21-996186180'
         )
 
         self.assertTrue(Contact.objects.exists())
@@ -36,31 +36,30 @@ class contactModelTest(TestCase):
         contact = Contact(
             speaker=self.speaker,
             kind=Contact.EMAIL,
-            value='henrique@bastos.net'
+            value='henrique@bastos.net',
         )
         self.assertEqual('henrique@bastos.net', str(contact))
-
 
 
 class ContactManagerTest(TestCase):
     def setUp(self):
         s = Speaker.objects.create(
-            name="henrique Bastos",
+            name='henrique Bastos',
             slug='henrique-bastos',
-            photo='http://hbn.link/hb-pic'
+            photo='http://hbn.link/hb-pic',
         )
 
         s.contact_set.create(kind=Contact.EMAIL, value='henrique@bastos.net')
         s.contact_set.create(kind=Contact.PHONE, value='21-996186180')
-    
+
     def test_emails(self):
         qs = Contact.objects.emails()
         expected = ['henrique@bastos.net']
 
-        self.assertQuerysetEqual(qs, expected, lambda o:o.value)
+        self.assertQuerysetEqual(qs, expected, lambda o: o.value)
 
     def test_phones(self):
         qs = Contact.objects.phones()
         expected = ['21-996186180']
 
-        self.assertQuerysetEqual(qs, expected, lambda o:o.value)
+        self.assertQuerysetEqual(qs, expected, lambda o: o.value)

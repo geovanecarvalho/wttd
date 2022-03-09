@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
 
+
 class HomeTest(TestCase):
     fixtures = ['keynotes.json']
 
@@ -14,7 +15,7 @@ class HomeTest(TestCase):
     def test_template(self):
         """Must use index.html."""
         self.assertTemplateUsed(self.response, 'index.html')
-    
+
     def test_subscription_link(self):
         expected = 'href="{}"'.format(r('subscriptions:new'))
         self.assertContains(self.response, expected)
@@ -27,12 +28,12 @@ class HomeTest(TestCase):
             'http://hbn.link/hopper-pic',
             'href="{}"'.format(r('speaker_detail', slug='alan-turing')),
             'Alan Turing',
-            'http://hbn.link/turing-pic'
+            'http://hbn.link/turing-pic',
         ]
         for expected in contents:
             with self.subTest():
                 self.assertContains(self.response, expected)
-    
+
     def test_speakers_link(self):
         expected = 'href="{}#speakers"'.format(r('home'))
         self.assertContains(self.response, expected)
