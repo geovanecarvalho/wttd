@@ -1,12 +1,11 @@
-from django.http import HttpResponse
+from typing import List
+from django.views.generic import ListView
 from django.shortcuts import get_object_or_404, render
-from eventex.core.models import Speaker, Talk, Course
+from eventex.core.models import Speaker, Talk
 
 
+home = ListView.as_view(template_name='index.html', model=Speaker)
 
-def home(request):
-    speakers = Speaker.objects.all()
-    return render(request, 'index.html', {'speakers': speakers})
 
 def speaker_detail(request, slug):
     speaker = get_object_or_404(Speaker, slug=slug)
