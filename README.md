@@ -1,8 +1,9 @@
 # Eventex
-
 Sistema de Eventos encomendado pela Morena.
 
-## Como desenvolver?
+![Build Status](https://app.travis-ci.com/geovanecarvalho/wttd.svg?branch=main)
+## Como desenvolver
+esenvolver?
 
 1. Clone o repositório.
 2. Crie um virtualenv com Python 3.8.5.
