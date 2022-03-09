@@ -1,8 +1,8 @@
 # Eventex
-
 Sistema de Eventos encomendado pela Morena.
-https://app.travis-ci.com/geovanecarvalho/wttd.svg?branch=main
-## Como d
+
+![Build Status](https://app.travis-ci.com/geovanecarvalho/wttd.svg?branch=main)
+## Como desenvolver
 esenvolver?
 
 1. Clone o repositório.
